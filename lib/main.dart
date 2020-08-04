@@ -4,13 +4,14 @@ import './screens/home_screen.dart';
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
 import './screens/init_screen.dart';
+import './screens/event_detail_screen.dart';
+import './screens/event_list_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
         SignupScreen.routeName: (context) => SignupScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
+        EventListScreen.routeName: (context) => EventListScreen(),
+        EventDetailScreen.routeName: (context) => EventDetailScreen(),
       },
     );
   }
