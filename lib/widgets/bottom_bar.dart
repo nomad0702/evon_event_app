@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../screens/home_screen.dart';
 import '../screens/search_screen.dart';
+import '../screens/profile_screen.dart';
+import '../screens/organizer_screen.dart';
 
 class BottomBar extends StatelessWidget {
   final int currentIndex;
@@ -19,6 +21,14 @@ class BottomBar extends StatelessWidget {
 
       case 1:
         Navigator.pushReplacementNamed(context, SearchScreen.routeName);
+        break;
+
+      case 2:
+        Navigator.pushReplacementNamed(context, OrganizerScreen.routeName);
+        break;
+
+      case 4:
+        Navigator.pushReplacementNamed(context, ProfileScreen.routeName);
         break;
 
       default:

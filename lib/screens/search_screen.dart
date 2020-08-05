@@ -19,7 +19,7 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.keyboard_arrow_left),
           onPressed: () {},
         ),
         backgroundColor: Colors.transparent,

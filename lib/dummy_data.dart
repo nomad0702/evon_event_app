@@ -54,22 +54,28 @@ class DummyData {
       'backgroundColor': Colors.blue[50],
     },
     {
-      'icon': Icons.music_note,
-      'title': 'Music',
-      'foregroundColor': Colors.red,
-      'backgroundColor': Colors.red[50],
-    },
-    {
       'icon': Icons.local_airport,
       'title': 'Adventure',
       'foregroundColor': Colors.purple,
       'backgroundColor': Colors.purple[50],
     },
     {
+      'icon': Icons.music_note,
+      'title': 'Music',
+      'foregroundColor': Colors.red,
+      'backgroundColor': Colors.red[50],
+    },
+    {
       'icon': Icons.business,
       'title': 'Business',
       'foregroundColor': Colors.pink,
       'backgroundColor': Colors.pink[50],
+    },
+    {
+      'icon': Icons.music_note,
+      'title': 'Music',
+      'foregroundColor': Colors.red,
+      'backgroundColor': Colors.red[50],
     },
     {
       'icon': Icons.memory,
@@ -78,22 +84,16 @@ class DummyData {
       'backgroundColor': Colors.blue[50],
     },
     {
-      'icon': Icons.music_note,
-      'title': 'Music',
-      'foregroundColor': Colors.red,
-      'backgroundColor': Colors.red[50],
+      'icon': Icons.business,
+      'title': 'Business',
+      'foregroundColor': Colors.pink,
+      'backgroundColor': Colors.pink[50],
     },
     {
       'icon': Icons.local_airport,
       'title': 'Adventure',
       'foregroundColor': Colors.purple,
       'backgroundColor': Colors.purple[50],
-    },
-    {
-      'icon': Icons.business,
-      'title': 'Business',
-      'foregroundColor': Colors.pink,
-      'backgroundColor': Colors.pink[50],
     },
   ];
 }
