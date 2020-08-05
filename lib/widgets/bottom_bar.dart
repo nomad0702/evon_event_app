@@ -1,56 +1,72 @@
 import 'package:flutter/material.dart';
 
+import '../screens/home_screen.dart';
+import '../screens/search_screen.dart';
+
 class BottomBar extends StatelessWidget {
-  final int selectedIndex;
-  final Function onTap;
+  final int currentIndex;
 
   const BottomBar({
     Key key,
-    @required this.selectedIndex,
-    @required this.onTap,
+    @required this.currentIndex,
   }) : super(key: key);
+
+  void _onTapHandler(context, index) {
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+        break;
+
+      case 1:
+        Navigator.pushReplacementNamed(context, SearchScreen.routeName);
+        break;
+
+      default:
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Theme.of(context).primaryColor,
-        currentIndex: selectedIndex,
-        onTap: (index) => onTap(index),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            title: Text('Home'),
+      type: BottomNavigationBarType.fixed,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      unselectedItemColor: Colors.grey,
+      selectedItemColor: Theme.of(context).primaryColor,
+      currentIndex: currentIndex,
+      onTap: (index) => _onTapHandler(context, index),
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            title: Text('Search'),
+          title: Text('Home'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.search,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.star,
-            ),
-            title: Text('Favovite'),
+          title: Text('Search'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.star,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications,
-            ),
-            title: Text('Message'),
+          title: Text('Favovite'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.notifications,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-            ),
-            title: Text('My'),
+          title: Text('Message'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.person,
           ),
-        ]);
+          title: Text('My'),
+        ),
+      ],
+    );
   }
 }

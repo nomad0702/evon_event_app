@@ -1,3 +1,4 @@
+import 'package:evon_event_app/screens/filter_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../dummy_data.dart';
@@ -7,23 +8,12 @@ import '../widgets/bottom_bar.dart';
 import '../widgets/event_list_tile.dart';
 import '../widgets/event_card_footer.dart';
 
-class EventListScreen extends StatefulWidget {
+class EventListScreen extends StatelessWidget {
   static final String routeName = '/events';
 
-  @override
-  _EventListScreenState createState() => _EventListScreenState();
-}
-
-class _EventListScreenState extends State<EventListScreen> {
   final List events = DummyData.events;
 
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +58,7 @@ class _EventListScreenState extends State<EventListScreen> {
         ),
       ),
       bottomNavigationBar: BottomBar(
-        selectedIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        currentIndex: _currentIndex,
       ),
     );
   }
@@ -228,21 +217,24 @@ class FilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(4.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(3.0),
-        border: Border.all(color: Colors.grey[400]),
-        color: Colors.grey[200],
-      ),
-      child: Row(
-        children: <Widget>[
-          Icon(
-            Icons.tune,
-            size: 15,
-          ),
-          Text(' Filter '),
-        ],
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, FilterScreen.routeName),
+      child: Container(
+        padding: const EdgeInsets.all(4.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(3.0),
+          border: Border.all(color: Colors.grey[400]),
+          color: Colors.grey[200],
+        ),
+        child: Row(
+          children: <Widget>[
+            Icon(
+              Icons.tune,
+              size: 15,
+            ),
+            Text(' Filter '),
+          ],
+        ),
       ),
     );
   }

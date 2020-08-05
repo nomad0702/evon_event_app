@@ -1,3 +1,5 @@
+import 'package:evon_event_app/screens/filter_screen.dart';
+import 'package:evon_event_app/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import './screens/home_screen.dart';
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (context) => HomeScreen(),
         EventListScreen.routeName: (context) => EventListScreen(),
         EventDetailScreen.routeName: (context) => EventDetailScreen(),
+        SearchScreen.routeName: (context) => SearchScreen(),
+        FilterScreen.routeName: (context) => FilterScreen(),
       },
     );
   }

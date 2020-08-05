@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../dummy_data.dart';
 import '../widgets/gradient_button.dart';
+import '../widgets/section_title.dart';
 
 class EventDetailScreen extends StatelessWidget {
   static final String routeName = '/event';
@@ -13,7 +14,7 @@ class EventDetailScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {},
+          onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -114,28 +115,6 @@ class InfoTile extends StatelessWidget {
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
       ),
       subtitle: Text(subtitle),
-    );
-  }
-}
-
-class SectionTitle extends StatelessWidget {
-  final String title;
-  const SectionTitle({
-    Key key,
-    @required this.title,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15.0),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
     );
   }
 }

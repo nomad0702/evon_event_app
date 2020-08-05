@@ -7,25 +7,15 @@ import '../widgets/find_events_near.dart';
 import '../widgets/bottom_bar.dart';
 import '../widgets/event_list_tile.dart';
 import '../widgets/event_card_footer.dart';
+import '../widgets/section_title.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   static const String routeName = '/home';
 
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   final List categories = DummyData.categories;
   final List events = DummyData.events;
 
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -43,32 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              SectionTitle(title: 'BROWSE BY CATEGORY', viewAll: Text('')),
-              CategoryBrowser(categories: categories),
-              SectionTitle(
+              SectionTitle(title: 'BROWSE BY CATEGORY'),
+              HorizontalCategoryBrowser(categories: categories),
+              SectionTitleWithLink(
                 title: 'POPULAR EVENTS',
-                viewAll: GestureDetector(
-                  child: Text(
-                    'View All',
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, EventListScreen.routeName);
-                  },
-                ),
               ),
               HorizontalEventListView(events: events),
-              SectionTitle(
+              SectionTitleWithLink(
                 title: 'NEARBY EVENTS',
-                viewAll: GestureDetector(
-                  child: Text(
-                    'View All',
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, EventListScreen.routeName);
-                  },
-                ),
               ),
               HorizontalEventListView(events: events),
             ],
@@ -76,8 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomBar(
-        selectedIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        currentIndex: _currentIndex,
       ),
     );
   }
@@ -159,10 +130,10 @@ class VerticalEventCard extends StatelessWidget {
   }
 }
 
-class SectionTitle extends StatelessWidget {
+class SectionTitleWithLink extends StatelessWidget {
   final String title;
   final Widget viewAll;
-  const SectionTitle({
+  const SectionTitleWithLink({
     Key key,
     @required this.title,
     this.viewAll,
@@ -178,20 +149,28 @@ class SectionTitle extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          viewAll,
+          GestureDetector(
+            child: Text(
+              'View All',
+              style: TextStyle(color: Theme.of(context).primaryColor),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, EventListScreen.routeName);
+            },
+          ),
         ],
       ),
     );
   }
 }
 
-class CategoryBrowser extends StatelessWidget {
-  const CategoryBrowser({
+class HorizontalCategoryBrowser extends StatelessWidget {
+  const HorizontalCategoryBrowser({
     Key key,
     @required this.categories,
   }) : super(key: key);
@@ -207,7 +186,7 @@ class CategoryBrowser extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: categories.length,
-        itemBuilder: (context, index) => CategoryCard(
+        itemBuilder: (context, index) => VerticalCategoryCard(
           title: categories[index]['title'],
           icon: categories[index]['icon'],
           foregroundColor: categories[index]['foregroundColor'],
@@ -218,13 +197,13 @@ class CategoryBrowser extends StatelessWidget {
   }
 }
 
-class CategoryCard extends StatelessWidget {
+class VerticalCategoryCard extends StatelessWidget {
   final String title;
   final IconData icon;
   final Color foregroundColor;
   final Color backgroundColor;
 
-  const CategoryCard({
+  const VerticalCategoryCard({
     Key key,
     @required this.title,
     @required this.icon,
